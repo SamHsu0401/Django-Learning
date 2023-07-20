@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Product
+from .models import Product, Order, OrderProduct
 
 
 
@@ -10,7 +10,15 @@ class ProductAdmin(admin.ModelAdmin):
         "date",
     ]
 
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ["user",
+                    "ordered",
+                    "quantity"
+                    ]
 
 
 
 admin.site.register(Product, ProductAdmin)
+
+admin.site.register(Order)
+admin.site.register(OrderProduct, OrderAdmin)
