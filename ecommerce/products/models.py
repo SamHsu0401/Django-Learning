@@ -35,7 +35,10 @@ class Product(models.Model):
         return reverse("add_to_cart", kwargs={
             'pk': self.pk
         })
-    
+    def get_remove_to_cart_url(self):
+        return reverse("remove_item_from_cart", kwargs={
+        'pk': self.pk
+    })
     
 class OrderProduct(models.Model):
     
@@ -71,6 +74,8 @@ class Order(models.Model):
     ordered_date = models.DateTimeField()
     ordered = models.BooleanField(default=False)
     ref_code = models.CharField(max_length=20, blank=True, null=True)
+    
+
     
         
     
