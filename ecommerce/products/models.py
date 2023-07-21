@@ -8,6 +8,8 @@ class Product(models.Model):
     title = models.CharField(max_length= 100)
     description = models.TextField()
     price = models.FloatField(default=0)
+    image = models.ImageField(upload_to="uploads/products/", blank=True, null=True)
+    
     
     
     CATEGORY_CHOICE = [

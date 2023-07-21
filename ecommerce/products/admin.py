@@ -8,6 +8,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = [
         "title",
         "date",
+        "image"
     ]
 
 class OrderAdmin(admin.ModelAdmin):
