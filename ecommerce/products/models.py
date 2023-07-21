@@ -72,12 +72,20 @@ class Order(models.Model):
     )
 
     products = models.ManyToManyField(OrderProduct)
-    
     start_date = models.DateTimeField(auto_now_add=True)
+    address = models.CharField (max_length=50, default='', blank=True)
     ordered_date = models.DateTimeField()
     ordered = models.BooleanField(default=False)
     ref_code = models.CharField(max_length=20, blank=True, null=True)
     
+    def totalItems(self):
+        total_items = 0
+        for order_product in self.products.all():
+            total_items += order_product.quantity
+        return total_items
+
+    def __str__(self):
+        return f"Order #{self.pk} - Total Items: {self.totalItems()}"
 
     
         

@@ -3,6 +3,7 @@ from django.views.generic import DetailView, ListView
 from django.contrib import messages
 from .models import Product, OrderProduct, Order
 from django.utils import timezone
+from django.views import View
 
 
 class ProductListView(ListView):
@@ -76,3 +77,15 @@ def remove_single_product_from_cart(request, pk):
         messages.info(request, "You do not have an active order")
     
     return redirect("product_detail", pk=pk)
+
+
+class Cart(View):
+    def get(self , request):
+        ids = list(request.session.get('cart').keys())
+        products = Product.get_products_by_id(ids)
+        print(products)
+        return render(request , 'cart.html' , {'products' : products} )
+
+
+
+
