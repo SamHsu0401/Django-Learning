@@ -1,3 +1,4 @@
+#/Users/samhsu/Desktop/Personal Learning/Python learning/Django-learning/ecommerce/django_project/urls.py
 from django.contrib import admin
 from django.urls import path, include
 
