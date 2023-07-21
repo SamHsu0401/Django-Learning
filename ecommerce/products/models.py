@@ -1,3 +1,4 @@
+#/Users/samhsu/Desktop/Personal Learning/Python learning/Django-learning/ecommerce/products/models.py
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
@@ -8,7 +9,7 @@ class Product(models.Model):
     title = models.CharField(max_length= 100)
     description = models.TextField()
     price = models.FloatField(default=0)
-    image = models.ImageField(upload_to="uploads/products/", blank=True, null=True)
+    image = models.ImageField(upload_to="uploads/products_images/", blank=True, null=True)
     
     
     

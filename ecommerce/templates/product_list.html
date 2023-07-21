@@ -8,7 +8,7 @@
   <div class="row mx-auto">
     {% for product in product_list %}
     <div class="card mx-auto mb-3"  style="width: 18rem;">
-      <img class="card-img-top" src="{{product.image}}" alt="Card image cap">
+      <img class="card-img-top" src="{{ product.image }}" alt="Card image cap">
       <div class="card-body">
         <p class="card-title">{{product.title}} </p>
         <p class="card-text"><b>$ {{product.price}}</b></p>
@@ -48,7 +48,7 @@
             
   </div>
 
-
+</div>
 
 
 
