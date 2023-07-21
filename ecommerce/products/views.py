@@ -79,12 +79,17 @@ def remove_single_product_from_cart(request, pk):
     return redirect("product_detail", pk=pk)
 
 
-class Cart(View):
-    def get(self , request):
-        ids = list(request.session.get('cart').keys())
-        products = Product.get_products_by_id(ids)
-        print(products)
-        return render(request , 'cart.html' , {'products' : products} )
+def cart_view(request):
+    user = request.user
+    orders = Order.objects.filter(user=user, ordered=False)
+    if orders.exists():
+        order = orders[0]
+        order_products = order.products.all()
+        total_price = sum([op.product.price * op.quantity for op in order_products])
+        return render(request, 'cart.html', {"order_products": order_products, "total_price": total_price})
+    else:
+        return render(request, 'cart.html', {"message": "Your cart is empty"})
+
 
 
 
