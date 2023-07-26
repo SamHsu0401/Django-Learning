@@ -42,6 +42,8 @@ class Product(models.Model):
         return reverse("remove_item_from_cart", kwargs={
         'pk': self.pk
     })
+        
+
     
 class OrderProduct(models.Model):
     
