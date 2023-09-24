@@ -89,7 +89,7 @@ class Order(models.Model):
     def __str__(self):
         return f"Order #{self.pk} - Total Items: {self.totalItems()}"
 
-    
+#update
         
     
     
